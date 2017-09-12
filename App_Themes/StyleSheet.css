@@ -1,0 +1,131 @@
+﻿body 
+{
+
+}
+
+html, body, form
+{
+    font-family:"Segoe UI Webfont",-apple-system,"Helvetica Neue","Lucida Grande","Roboto","Ebrima","Nirmala UI","Gadugi","Segoe Xbox Symbol","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math";
+    font-size:12px;
+    color:#717171;
+    background: #ffffff;    
+}
+
+#tdrddModule{
+    text-align: right; 
+    vertical-align: top; 
+    padding-top: 5px; 
+    margin-right: 5px; 
+    z-index:5;
+    position:absolute;
+    top:0px;
+    right:370px;
+}
+
+.textbox{
+border: 1px solid #DDDDDD;
+padding: 8px 5px 8px 5px;
+background: #ffffff;   
+-moz-border-radius: 5px;
+ /*border-radius:5px;*/   
+-webkit-border-radius: 5px;
+color:#717171;
+}
+
+.button 
+{
+  
+  border-width:thin;
+  color: #ffffff;
+  background: #5CA038;
+  padding: 10px 5px 10px 5px; 
+}
+
+
+
+    .button:hover {
+  background: #386b1c;
+    
+}
+
+    /*css for main page*/
+    
+#menu {
+	list-style:none;
+	width:190px;
+    padding-top:5px;
+    margin-top:0px;
+    vertical-align:top;
+    padding-right:10px;
+    padding-left:10px;
+    margin-right:12px;
+    z-index:20000;
+    position:absolute;
+    right:150px;
+    top:0px;
+   
+
+}
+
+#menu li {
+	float:right;
+	text-align:center;
+	position:relative;
+	padding: 4px 4px 4px 4px;
+	/*margin-right:30px;*/
+	margin-bottom:0px;
+	border:none;
+    
+    
+}
+
+
+
+#menu li:hover {
+	/*padding: 4px 9px 4px 9px;*/
+	background-color:#d8d5cb;
+}
+
+
+.dropdown_3columns{
+	margin:4px auto;
+	float:left;
+	position:absolute;
+	left:-999em; /* Hides the drop down */
+	text-align:left;
+	padding:10px 5px 10px 5px;
+	border:1px solid skyBlue;
+	border-top:none;
+	background-color:white;
+    padding-bottom:0px;
+	
+	
+}
+
+.dropdown_3columns {width: 250px;}
+
+#menu li:hover .dropdown_3columns{
+	left:-1px;
+	top:auto;
+}
+
+
+/*.col_3{
+	display:inline;
+	float: left;
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}*/
+
+/*.col_3 {width:200px;}*/
+
+*/
+
+#menu li:hover .align_right {
+	left:auto;
+	right:-1px;
+	top:auto;
+}
+
+

@@ -55,10 +55,10 @@
                                         <telerik:RadMenuItem Text="Bio-Medical Engineering" Value="dept_civil" NavigateUrl="~/Others/Dashboard.aspx" Target="res" />
                                     </Items>
                                     </telerik:RadMenuItem>
-                                <telerik:RadMenuItem Text="All Department's Information" Value="" NavigateUrl="~/Pages/Department.aspx" Target="res" />
-                                <telerik:RadMenuItem Text="Find Your Department" Value="" NavigateUrl="~/Pages/Department.aspx" Target="res" />
+                                <telerik:RadMenuItem Text="All Department's Information" Value="allDepts" NavigateUrl="~/Pages/Department.aspx" Target="res" />
+                                <telerik:RadMenuItem Text="Find Your Department" Value="" NavigateUrl="Pages/FinfDepartment.aspx" Target="res" />
                                 <telerik:RadMenuItem Text="About Us" Value="about-us" NavigateUrl="~/Others/Dashboard.aspx" Target="res" />
-                                <telerik:RadMenuItem Text="Contact" Value="contact" NavigateUrl="~/Others/Dashboard.aspx" Target="res" />
+                                <telerik:RadMenuItem Text="Contact" Value="contact" NavigateUrl="Pages/ContactUs.aspx" Target="res" />
                             </Items>
                         </telerik:RadMenu>
                     </div>

@@ -70,9 +70,9 @@ html, body, form, #parentDiv {
     color: White;
 }
 
-.riSingle, .RadInput, .RadInput_Metro {
-    width: 90% !important;
-}
+/*/*.riSingle, .RadInput, .RadInput_Metro {
+    width: 90%;
+}*/*/
 
 .padding {
     padding: 5px;

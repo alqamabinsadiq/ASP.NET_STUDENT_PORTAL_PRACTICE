@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Department.aspx.cs" Inherits="Pages_Department" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AdminDepartment.aspx.cs" Inherits="Pages_AdminDepartment" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -53,6 +53,21 @@
                             ItemStyle-VerticalAlign="Top" AlternatingItemStyle-VerticalAlign="Top"
                             AlternatingItemStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" FilterItemStyle-HorizontalAlign="Center"
                             HeaderStyle-HorizontalAlign="Center">
+                            <CommandItemTemplate>
+                                <table width="100%">
+                                    <tr>
+                                        <td align="left">
+                                            <asp:Label ID="lblTitle" runat="server"></asp:Label>
+                                        </td>
+                                        <td align="right"><a href="#" style="color:black" onclick="return ShowInsertForm();">
+                                            <img src="../Images/add.png" alt="Add New Item" title="Add New Item" />
+                                            Add New Record
+                                        </a></td>
+                                        
+                                    </tr>
+
+                                </table>
+                            </CommandItemTemplate>
                             <Columns>
                                 <telerik:GridBoundColumn DataField="DepartmentCode" HeaderText="Department Code" HeaderStyle-Width="90px" FilterControlWidth="50px"
                                     AutoPostBackOnFilter="true" />
@@ -70,13 +85,36 @@
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
                     </telerik:RadGrid>
+                    <telerik:RadWindowManager RenderMode="Lightweight" ID="rwm" Behaviors="Move, Close" runat="server"
+                        OffsetElementID="OffsetImage" Width="350px" Height="300px">
+                        <Windows>
+                            <telerik:RadWindow RenderMode="Lightweight" ID="rwUserInfo" Title="Add New Department" NavigateUrl="AddDepartment.aspx" VisibleStatusbar="false"
+                                runat="server" ReloadOnShow="true" ShowContentDuringLoad="false" Modal="true" OnClientClose="refreshGrid">
+                            </telerik:RadWindow>
+                        </Windows>
+                    </telerik:RadWindowManager>
                 </telerik:RadPane>
             </telerik:RadSplitter>
         </div>
+
+        <script type="text/javascript">
+            function ShowInsertForm() {
+                window.radopen("AddDepartment.aspx", "rwUserInfo");
+                return false;
+            }
+            
+
+            function refreshGrid() {
+                var masterTable = $find("<%= rgList.ClientID %>").get_masterTableView();
+                masterTable.rebind();
+            }
+
+        </script>
 
     </form>
 
 </body>
 </html>
+
 
 

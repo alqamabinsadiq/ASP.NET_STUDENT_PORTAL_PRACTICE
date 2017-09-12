@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 
-public partial class Pages_Department : System.Web.UI.Page
+public partial class Pages_FinfDepartment : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -46,5 +46,27 @@ public partial class Pages_Department : System.Web.UI.Page
             }
         }
 
+    }
+
+    protected void BtnShowDept_Click(object sender, EventArgs e)
+    {
+        int marks;
+        if (String.IsNullOrEmpty(txtBoxTotalMarks.Text))
+        {
+            marks = 10000;
+        }
+        else
+        {
+            marks = Convert.ToInt32(txtBoxTotalMarks.Text);
+        }
+        string connectString = System.Configuration.ConfigurationManager.ConnectionStrings["TestDBConnectionString"].ToString();
+
+        DataClassesDataContext db = new DataClassesDataContext(connectString);
+        var query = from departments in db.Departments.AsEnumerable()
+                    orderby departments.DepartmentCode
+                    where departments.CmarksMerit <= marks
+                    select departments;
+        rgList.DataSource = query;
+        rgList.DataBind();
     }
 }

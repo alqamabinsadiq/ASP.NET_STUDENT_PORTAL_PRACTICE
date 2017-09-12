@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Department.aspx.cs" Inherits="Pages_Department" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="FinfDepartment.aspx.cs" Inherits="Pages_FinfDepartment" %>
 
 <%@ Register Assembly="Telerik.Web.UI" Namespace="Telerik.Web.UI" TagPrefix="telerik" %>
 
@@ -8,8 +8,15 @@
 <head runat="server">
     <title></title>
      <link href="../App_Themes/Default.css" rel="stylesheet" />
-    <%--<link href="../../../App_Themes/Default.css" rel="stylesheet" /> --%>
-    <script src="../scripts/common.js"></script>
+    <%--<link href="../../../App_Themes/Default.css" rel="stylesheet" />
+    <script src="../../../scripts/common.js"></script>--%>
+    <style>
+        .tdStyle{
+            width: 50px;
+            margin: 5px;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body style="height: 100%">
     <form id="form1" runat="server">
@@ -43,8 +50,23 @@
         </telerik:RadAjaxLoadingPanel>
 
         <div id="parentDiv">
-            <telerik:RadSplitter runat="server" Height="100%" Width="99%" Orientation="Horizontal">
+            <telerik:RadSplitter runat="server" Height="100%" Width="100%" Orientation="Horizontal">
                 <telerik:RadPane runat="server" Height="100%" Width="100%" Scrolling="None">
+                    <table cellspacing="0" cellpadding="2" style="width: 100%; background-color: #F6F3E9; height:70px">
+                        <tr>
+                            <td class="tdStyle">
+                                Enter your total marks to search for departments
+                            </td>
+                            <td class="tdStyle">
+                                <telerik:RadTextBox ID="txtBoxTotalMarks" runat="server" InputType="Number"></telerik:RadTextBox>
+                            </td>
+                            <td class="tdStyle">
+                                <telerik:RadButton ID="BtnShowDept" runat="server" Text="Submit" OnClick="BtnShowDept_Click"></telerik:RadButton>
+                            </td>
+                            <td class="tdStyle"></td>
+                            <td class="tdStyle"></td>
+                        </tr>
+                    </table>
                     <telerik:RadGrid ID="rgList" PageSize="100" AllowPaging="true" runat="server" Width="99.8%" Height="100%" CellSpacing="5"
                         AutoGenerateColumns="false" AllowFilteringByColumn="True" AllowSorting="true" CellPadding="5" 
                          OnDataBound="rgList_DataBound" OnInit="rgList_Init">
@@ -53,6 +75,15 @@
                             ItemStyle-VerticalAlign="Top" AlternatingItemStyle-VerticalAlign="Top"
                             AlternatingItemStyle-HorizontalAlign="Left" ItemStyle-HorizontalAlign="Left" FilterItemStyle-HorizontalAlign="Center"
                             HeaderStyle-HorizontalAlign="Center">
+                            <CommandItemTemplate>
+                                <table width="100%">
+                                    <tr>
+                                        <td align="left">
+                                            <asp:Label ID="lblTitle" runat="server"></asp:Label>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </CommandItemTemplate>
                             <Columns>
                                 <telerik:GridBoundColumn DataField="DepartmentCode" HeaderText="Department Code" HeaderStyle-Width="90px" FilterControlWidth="50px"
                                     AutoPostBackOnFilter="true" />
@@ -70,13 +101,33 @@
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
                     </telerik:RadGrid>
+                    <telerik:RadWindow ID="rWin" runat="server" Modal="true" Behaviors="Move, Close" ShowContentDuringLoad="false"
+                        VisibleStatusbar="false" VisibleOnPageLoad="false" RestrictionZoneID="parentDiv" KeepInScreenBounds="true" OnClientClose="refreshGrid">
+                    </telerik:RadWindow>
                 </telerik:RadPane>
             </telerik:RadSplitter>
         </div>
+
+        <script type="text/javascript">
+            function refreshGrid() {
+                var masterTable = $find("<%= rgList.ClientID %>").get_masterTableView();
+                masterTable.rebind();
+            }
+
+            function ShowRadWindow(PRG_CODE) {
+                var radWin = window.$find('rWin');
+                radWin.SetUrl('Entry.aspx?PRG_CODE=' + PRG_CODE);
+                radWin.SetTitle('Program Information ');
+                radWin.Show();
+
+            }
+
+        </script>
 
     </form>
 
 </body>
 </html>
+
 
 
